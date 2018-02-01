@@ -4,13 +4,13 @@ class App extends React.Component {
     this.state = {
       currentVideo: props.videos[0], 
       videoList: props.videos
-    }
+    };
   }
 
   onVideoEntryClick(video) {
     this.setState({
       currentVideo: video
-    })
+    });
   }
 
   render() {
@@ -18,7 +18,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <Search />
           </div>
         </nav>
         <div className="row">
@@ -30,7 +30,7 @@ class App extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
