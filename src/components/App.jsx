@@ -29,7 +29,7 @@ class App extends React.Component {
   }
 
   onSearchClick(value) {
-    console.log('on search click value:', value)
+    console.log('on search click value:', value);
     this.setState({
       searchQuery: value
     }, () => {
