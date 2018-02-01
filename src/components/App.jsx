@@ -47,7 +47,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search onClick={this.onSearchClick.bind(this)} />
+            <Search onSearchEvent={this.onSearchClick.bind(this)} />
           </div>
         </nav>
         <div className="row">
