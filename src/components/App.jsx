@@ -7,7 +7,7 @@ var App = (props) => (
     </nav>
     <div className="row">
       <div className="col-md-7">
-        <div><h5><em>videoPlayer</em> view goes here</h5></div>
+        <VideoPlayer video={props.videos[0]} />
       </div>
       <div className="col-md-5">
         <VideoList videos={props.videos}/>
