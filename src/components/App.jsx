@@ -2,9 +2,24 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentVideo: props.videos[0], 
-      videoList: props.videos
+      currentVideo: window.exampleVideoData[0], 
+      videoList: window.exampleVideoData,
+      searchQuery: 'dog'
     };
+  }
+  componentDidMount() {
+    this.props.searchYouTube({query: this.state.searchQuery, max: 5, key: window.YOUTUBE_API_KEY}, this.onSearchSetState.bind(this));
+  }
+
+  // componentWillUpdate() {
+  //   this.props.searchYouTube({query: this.state.searchQuery, max: 5, key: window.YOUTUBE_API_KEY}, this.onSearchSetState.bind(this));
+  // }
+  
+  onSearchSetState(videos) {
+    this.setState({
+      currentVideo: videos[0],
+      videoList: videos
+    });
   }
 
   onVideoEntryClick(video) {
@@ -13,12 +28,26 @@ class App extends React.Component {
     });
   }
 
+  onSearchClick(value) {
+    console.log('on search click value:', value)
+    this.setState({
+      searchQuery: value
+    }, () => {
+      this.props.searchYouTube({
+        query: this.state.searchQuery, max: 5, key: window.YOUTUBE_API_KEY
+      }, this.onSearchSetState.bind(this));
+    });
+    // console.log('this.state.searchQuery:', this.state.searchQuery)
+    // console.log('on search click value:', value)
+    // console.log('-----------------------')
+  }
+
   render() {
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search />
+            <Search onClick={this.onSearchClick.bind(this)} />
           </div>
         </nav>
         <div className="row">
