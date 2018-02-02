@@ -1,19 +1,21 @@
+import React from 'react';
+import Search from './Search.jsx';
+import VideoList from './VideoList.jsx';
+import VideoPlayer from './VideoPlayer.jsx';
+import YOUTUBE_API_KEY from '../config/youtube.js';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentVideo: window.exampleVideoData[0], 
-      videoList: window.exampleVideoData,
+      currentVideo: null, 
+      videoList: [],
       searchQuery: 'dog'
     };
   }
   componentDidMount() {
-    this.props.searchYouTube({query: this.state.searchQuery, max: 5, key: window.YOUTUBE_API_KEY}, this.onSearchSetState.bind(this));
+    this.props.searchYouTube({query: this.state.searchQuery, max: 5, key: YOUTUBE_API_KEY}, this.onSearchSetState.bind(this));
   }
-
-  // componentWillUpdate() {
-  //   this.props.searchYouTube({query: this.state.searchQuery, max: 5, key: window.YOUTUBE_API_KEY}, this.onSearchSetState.bind(this));
-  // }
   
   onSearchSetState(videos) {
     this.setState({
@@ -37,9 +39,6 @@ class App extends React.Component {
         query: this.state.searchQuery, max: 5, key: window.YOUTUBE_API_KEY
       }, this.onSearchSetState.bind(this));
     });
-    // console.log('this.state.searchQuery:', this.state.searchQuery)
-    // console.log('on search click value:', value)
-    // console.log('-----------------------')
   }
 
   render() {
@@ -63,6 +62,4 @@ class App extends React.Component {
   }
 }
 
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
-window.App = App;
+export default App;

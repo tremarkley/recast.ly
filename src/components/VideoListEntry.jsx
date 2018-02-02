@@ -1,3 +1,5 @@
+import React from 'react';
+
 var VideoListEntry = (props) => (
   <div className="video-list-entry media">
     <div className="media-left media-middle">
@@ -16,6 +18,4 @@ VideoListEntry.propTypes = {
   video: React.PropTypes.object.isRequired
 };
 
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
-window.VideoListEntry = VideoListEntry;
+export default VideoListEntry;

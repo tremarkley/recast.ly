@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 var searchYouTube = ({query, max, key}, callback) => {
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
@@ -16,4 +18,4 @@ var searchYouTube = ({query, max, key}, callback) => {
   })
 };
 
-window.searchYouTube = searchYouTube;
+export default searchYouTube;
