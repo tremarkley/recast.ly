@@ -15,7 +15,7 @@ import {
 }
 
 const initialState = {
-  query: 'cats',
+  searchQuery: 'cats',
   videos: []
 }
 
@@ -52,39 +52,9 @@ function searchQuery(state = 'Cats', action) {
   }
 }
 
-function videoPlayerApp(state = {}, action) {
-  return {
-    query: searchQuery(state.query, action),
-    videos: videos(state.videos, action)
-  }
-}
+const videoPlayerApp = combineReducers({
+  searchQuery,
+  videos
+})
 
-// function videoPlayerApp(state = initialState, action) {
-//   switch (action.type) {
-//     case UPDATE_VIDEOLIST:
-//       return Object.assign({}, state, {
-//         videos: action.videoArr
-//       })
-//     case SEARCH_YOUTUBE:
-//       return Object.assign({}, state, {
-//         query: action.query
-//       })
-//     case UPDATE_VIDEO:
-//       return Object.assign({}, state, {
-//         videos: state.videos.map((video, index) =>{
-//           if (video.id === action.index && !video.selected) {
-//             return Object.assign({}, video, {
-//               selected: !video.selected
-//             })
-//           } else {
-//             return Object.assign({}, video, {
-//               selected: video.selected
-//             })
-//           }
-//           return video;
-//         })
-//       })
-//     default:
-//       return state
-//   }
-// }
+export default videoPlayerApp
