@@ -10,7 +10,7 @@
     "test": "live-server --open=./SpecRunner.html --port=8081",
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "dev": "webpack -d --watch",
-    "build" : "webpack -p"
+    "build": "webpack -p"
   },
   "dependencies": {
     "babel-loader": "^7.1.2",
@@ -18,7 +18,9 @@
     "jquery": "^2.2.1",
     "lodash": "^4.6.1",
     "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
@@ -26,6 +28,7 @@
     "babel-preset-react": "^6.24.1",
     "chai": "^3.5.0",
     "mocha": "2.3.3",
+    "redux-devtools": "^3.4.1",
     "sinon": "1.17.3",
     "webpack": "^3.10.0"
   }
